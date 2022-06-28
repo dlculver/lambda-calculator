@@ -125,3 +125,123 @@ def admisspoly(poly: polynomial) -> polynomial:
     for i in range(len(admissiblemonos)):
         p += admissiblemonos[i]
     return p
+
+def diff(poly:polynomial) -> polynomial:
+    p = polynomial([monomial(1,[-1])])
+    q = admisspoly(p*poly)
+    return q
+
+# # def admissmono(mono: monomial) -> polynomial:
+# #     L = mono.lambdas
+# #     if len(L) <= 1:
+# #         return polynomial([mono])
+# #     elif 2*L[0] < L[1]:
+# #         M = monomial(mono.constant, L[2:]) ## the tail end of the monomial, used for the recursion...
+# #         i = L[0]
+# #         n = L[1]-2*L[0]-1
+# #         temp = []
+# #         for j in range(int(n-1/2)): # this for loop produces the lists
+# #             temp += [monomial(math.comb(n-j-1,j)%prime, [i+n-j,2*i+1+j])*M]
+# #         p = polynomial([])
+# #         for j in range(len(temp)):
+# #             p += admissmono(temp[j])
+# #         return p
+# #     else: ## for when the admissibility condition is held
+# #         return polynomial([monomial(mono.constant, [L[0]])])*admissmono(monomial(1, L[1:]))
+#
+# # def admissmono(mono: monomial) -> polynomial:
+# #     L = mono.lambdas
+# #     if len(L) <= 1:
+# #         return polynomial([mono])
+# #     elif 2*L[0] < L[1]:
+# #         M = monomial(mono.constant, L[2:]) ## the tail end of the monomial, used for the recursion...
+# #         i = L[0]
+# #         n = L[1]-2*L[0]-1
+# #         initiallambda = [] #lambda terms on the left hand most side in the return
+# #         inductivemonomials = [] #monomials of length one less showing up in the return
+# #         for j in range(int(n-1/2)): # this for loop produces the lists
+# #             initiallambda += [polynomial([monomial(math.comb(n-j-1,j)%prime, [i+n-j])])]
+# #             inductivemonomials += [monomial(1, [2*i+1+j])*M]
+# #         p = polynomial([])
+# #         for j in range(len(initiallambda)):
+# #             p += initiallambda[j]*admissmono(inductivemonomials[j])
+# #         return p
+# #     else: ## for when the admissibility condition is held
+# #         return polynomial([monomial(mono.constant, [L[0]])])*admissmono(monomial(1, L[1:]))
+#
+#
+#
+#
+# p1= polynomial([monomial(1,[1,1,6])])
+# p2 = polynomial([monomial(1, [1,1,6])])
+#
+# q = p1
+#
+# r = admisspoly(q)
+#
+# L = r.lambdastuff
+#
+# monos = [mono.lambdas for mono in L]
+# print(monos)
+#
+# # p = monomial(1,[2,9,17])
+# #
+# # q = admissmono(p)
+# #
+# # L  = q.lambdastuff
+# #
+# # monos = [mono.lambdas for mono in L]
+# # consts = [mono.constant for mono in L]
+# # print(monos)
+# # print(consts)
+#
+#
+# # def admissify(poly: polynomial) -> polynomial:
+#
+#
+#
+#
+#
+#
+# # p1 = parsing('(1)+(2)')
+# # p2 = parsing('(3)+(4)')
+# # p3 = p1 * p2
+# #
+# # L = p3.lambdastuff
+# # monomials = [monom.lambdas for monom in L]
+# # print(monomials)
+#
+#
+# # p = p1
+# # L = p.lambdastuff
+# # constants = [monom.constant for monom in L]
+# # monomials = [monom.lambdas for monom in L]
+# # print(constants)
+# # print(monomials)
+# #
+# # # print(poly1.constant)
+# # # print(poly1.lambdastuff)
+# # # print(poly2.constant)
+# # # print(poly2.lambdastuff)
+# #
+# #
+# #
+# # # monomial1 = parsing('(1,1,3)')
+# # # monomial2 = parsing('(1,2,2)')
+# # #
+# # # sum = monomial1 + monomial2
+# # # monoms_of_sum = sum.lambdastuff
+# # # lambdalist = [y.lambdas for y in monoms_of_sum]
+# # # print(lambdalist)
+# #
+# # # monomial = monomial(1,'(1,1,3)')
+# # # print(monomial.lambdas)
+# # # print(monomial.isadmissible())
+# #
+# #
+# # # lambdastring = '5(3,1,1)+7(2,1,3)+2(1,1,5)+3(1,2,3)'
+# # # x = parsing(lambdastring)
+# # # #x.orderit()
+# # # print(type(x))
+# # # lambdalist = [y.lambdas for y in x.lambdastuff]
+# # # print(lambdalist)
